@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="res_partner_due_amount_show" model="ir.ui.view">
+            <field name="name">DueAmount</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                        <field name="due_amount" attrs="{'invisible': [('partner_id', '=', False)]}" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

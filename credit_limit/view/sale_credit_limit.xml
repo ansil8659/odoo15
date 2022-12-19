@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+
+        <record id="action_view_alert_limit" model="ir.ui.view">
+            <field name="name">alert_limit</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="model">sale.order</field>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <field name="is_warning" invisible="1"/>
+                    <div class="alert alert-danger" role="alert" style="margin-bottom:0px;"
+                         attrs="{'invisible': [('is_warning', '=', 1)]}"><center>Credit Limit Is Reached <field name="warn" readonly="True"/> your due amount is <field name="due_amount" readonly="True"/></center> <bold></bold>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record id="res_partner_credit_limit" model="ir.ui.view">
+            <field name="name">CreditLimit</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="10"/>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr=".//page[@name='accounting']//field[@name='bank_ids']" position="before">
+                    <group>
+                        <group>
+                            <group>
+                                <group>
+                                    <field name="credit_limit"/>
+                                    <div class="content-group"
+                                         attrs="{'invisible': [('credit_limit', '=', False)]}">
+                                        <group>
+                                            <label for="warn_amount"/>
+                                            <div class="p_settings_left_pane">
+                                                <field name="warn_amount" class="oe_inline" style="width: 33%"/>
+                                            </div>
+                                            <label for="block_amount"/>
+                                            <div class="p_settings_left_pane">
+                                                <field name="block_amount" class="oe_inline"/>
+                                            </div>
+                                        </group>
+                                    </div>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
