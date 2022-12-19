@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_product_stock" inherit_id="website_sale.product">
+        <xpath expr="//a[@id='add_to_cart']" position="after"><br/><br/>
+            <t t-if="product.qty_available &lt;= 0">
+                <strong><span class="alert alert-danger">OutOfStock</span></strong>
+            </t>
+            <t t-elif="product.qty_available &lt; 5 and product.qty_available &gt; 0">
+                <strong><span class="alert alert-warning">Available Stock is less than 5</span></strong>
+            </t>
+        </xpath>
+<!--        <xpath expr="//section[@id='product_detail']" position="before">-->
+<!--            <t t-if="product.qty_available &lt; 5 and product.qty_available &gt; 0">-->
+<!--                    <center><span class="alert alert-warning">Available Stock is less than 5</span></center>-->
+<!--            </t>-->
+<!--        </xpath>-->
+    </template>
+</odoo>
