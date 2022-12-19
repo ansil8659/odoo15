@@ -1,0 +1,21 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+room_access,Room Access,model_hotel_room,hotel_manager,1,1,1,1
+room_facility,Room Facility,model_room_facility,hotel_manager,1,1,1,1
+room_accommodation,Room Accommodation,model_room_accommodation,hotel_manager,1,1,1,1
+room_accommodation_guest_info,Room Accommodation Guest Info,model_guest_info,hotel_manager,1,1,1,1
+room_accommodation_guest_food_order,Room Accommodation Guest Food Order,model_room_order_food,hotel_manager,1,1,1,1
+room_accommodation_guest_food_order_category,Room Accommodation Guest Food Order Category,model_room_order_food_category,hotel_manager,1,1,1,1
+room_accommodation_guest_food_items,Room Accommodation Guest Food Items,model_room_order_food_item,hotel_manager,1,1,1,1
+room_accommodation_guest_food_items_list,Room Accommodation Guest Food Items List,model_room_order_food_item_list,hotel_manager,1,1,1,1
+room_accommodation_payment,Room Accommodation Payment,model_room_accommodation_payment,hotel_manager,1,1,1,1
+room_report,Room Report,model_hotel_report_wizard,hotel_manager,1,1,1,1
+room_access_reception,Room Access,model_hotel_room,hotel_receptionist,1,1,0,0
+room_facility_reception,Room Facility,model_room_facility,hotel_receptionist,1,1,1,0
+room_accommodation_reception,Room Accommodation,model_room_accommodation,hotel_receptionist,1,1,1,0
+room_accommodation_guest_info_reception,Room Accommodation Guest Info,model_guest_info,hotel_receptionist,1,1,1,0
+room_accommodation_guest_food_order_reception,Room Accommodation Guest Food Order,model_room_order_food,hotel_receptionist,1,1,1,0
+room_accommodation_guest_food_order_category_reception,Room Accommodation Guest Food Order Category,model_room_order_food_category,hotel_receptionist,1,1,1,0
+room_accommodation_guest_food_items_reception,Room Accommodation Guest Food Items,model_room_order_food_item,hotel_receptionist,1,1,0,0
+room_accommodation_guest_food_items_list_reception,Room Accommodation Guest Food Items List,model_room_order_food_item_list,hotel_receptionist,1,1,1,0
+room_accommodation_payment_reception,Room Accommodation Payment,model_room_accommodation_payment,hotel_receptionist,1,1,1,0
+room_report_reception,Room Report,model_hotel_report_wizard,hotel_receptionist,1,1,1,0

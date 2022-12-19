@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="hotel_room_food_order_category_form_view">
+            <field name="name">Food Category</field>
+            <field name="model">room.order.food.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                            <field name="category" string="Category"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="hotel_room_food_order_category_view">
+            <field name="name">Food Category</field>
+            <field name="model">room.order.food.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="category" string="Category"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hotel_room_food_category" model="ir.actions.act_window">
+            <field name="name">Food category</field>
+            <field name="res_model">room.order.food.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hotel_room_menu_order_food_category" name="Food Category" parent="hotel_room_menu_configuration"
+                  action="action_hotel_room_food_category"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_management">
+
+            <field name="name">Hotel</field>
+
+            <field name="description">User access level for Hotel module</field>
+
+            <field name="sequence">20</field>
+
+        </record>
+
+        <record id="hotel_receptionist" model="res.groups">
+
+            <field name="name">Receptionist</field>
+
+            <field name="category_id" ref="module_management"/>
+
+        </record>
+
+        <record id="hotel_manager" model="res.groups">
+
+            <field name="name">Manager</field>
+
+            <field name="category_id" ref="module_management"/>
+
+            <field name="implied_ids" eval="[(4, ref('hotel_receptionist'))]"/>
+
+        </record>
+    </data>
+</odoo>
+

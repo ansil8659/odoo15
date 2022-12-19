@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+
+        <record id="view_hotel_room_search" model="ir.ui.view">
+            <field name="name">room search</field>
+            <field name="model">hotel.room</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="room_no" string="Room No"/>
+                    <separator/>
+                    <filter name="bed"/>
+                    <filter name="facility_ids"/>
+                    <filter name="state" string="Available" domain="[('state', '=', 'available')]"/>
+                    <group expand="1" string="Group By">
+                        <filter name="bed" context="{'group_by':'bed', 'residual_visible':True}"/>
+                    </group>
+                    <group expand="2" string="Group By">
+                        <filter name="facility_ids" context="{'group_by':'facility_ids', 'residual_visible':True}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="hotel_room_view_form">
+            <field name="name">Room</field>
+            <field name="model">hotel.room</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="available,not_available" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <h1>
+                                    <div class="d-flex">
+                                        <group>
+                                            <field class="text-break" name="room_no" string="Room.No"/>
+                                        </group>
+                                    </div>
+                                </h1>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="rent" widget='monetary' options="{'currency_field': 'currency_id'}"
+                                       readonly="False"/>
+                                <field name="facility_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="bed"/>
+                                <field name="available_bed" attrs="{'invisible':[('bed', '!=', 'dormitory')]}"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="hotel_room_view">
+            <field name="name">Room</field>
+            <field name="model">hotel.room</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="room_no" string="Room.No"/>
+                    <field name="bed"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="rent" widget='monetary' options="{'currency_field': 'currency_id'}"
+                           readonly="False"/>
+                    <!--                    <field name="rent" invisible="1"/>class="fa-solid fa-dollar-sign"-->
+                    <field name="facility_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hotel_room" model="ir.actions.act_window">
+            <field name="name">Room</field>
+            <field name="res_model">hotel.room</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="hotel_room_menu" name="Hotel"/>
+        <menuitem id="hotel_room_menu_reception" name="Reception" parent="hotel_room_menu" sequence="1"/>
+        <menuitem id="hotel_room_reporting" name="Hotel Reporting" parent="hotel_room_menu" sequence="3"/>
+        <menuitem id="hotel_room_menu_configuration" name="Configuration" parent="hotel_room_menu" sequence="4"/>
+            <menuitem id="hotel_room_menu_rooms" name="Rooms" parent="hotel_room_menu_configuration"
+                      action="action_hotel_room"/>
+
+    </data>
+</odoo>

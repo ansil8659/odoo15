@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="view_hotel_room_facility">
+            <field name="name">Facility</field>
+            <field name="model">room.facility</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="facility" string="Facility"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="action_hotel_room_facility" model="ir.actions.act_window">
+            <field name="name">Facility</field>
+            <field name="res_model">room.facility</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hotel_room_menu_facilities" name="Facilities" parent="hotel_room_menu_configuration"
+                  action="action_hotel_room_facility"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="seq_hotel_room_order" model="ir.sequence">
+            <field name="name">Item No</field>
+            <field name="code">name</field>
+            <field name="prefix">ITEM/00</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="hotel_room_food_order_view_form">
+            <field name="name">Food Order</field>
+            <field name="model">room.order.food.item</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <group>
+                                     <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="item" string="Name"/>
+                            </group>
+                            <group>
+                                <field name="category_id" string="Category"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="price" string="Price"/>
+                            </group>
+                            <group>
+                                <field name="quantity" string="Quantity"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Add To List" name="add_to_list" type="object" class="oe_highlight" data-hotkey="w" invisible="context.get('room.order.food.item'),True"  />
+                            <button string="Discard" special="cancel" data-hotkey="z" invisible="context.get('room.order.food.item'),True"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hotel_room_food_order_items_view">
+            <field name="name">Food Items</field>
+            <field name="model">room.order.food.item</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="item" string="Name"/>
+                    <field name="category_id" string="Category"/>
+                    <field name="price" string="Price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_hotel_room_food_items" model="ir.actions.act_window">
+            <field name="name">Food Items</field>
+            <field name="res_model">room.order.food.item</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <menuitem id="hotel_room_menu_order_food_items" name="Food Items" parent="hotel_room_menu_configuration"
+                  action="action_hotel_room_food_items"/>
+
+    </data>
+</odoo>

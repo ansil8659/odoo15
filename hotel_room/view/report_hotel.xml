@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="hotel_report_view" model="ir.actions.server">
+            <field name="name">Hotel Report Wizard</field>
+            <field name="model_id" ref="hotel_room.model_room_accommodation"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">action= model.hotel_report_view()</field>
+        </record>
+
+        <menuitem id="hotel_reporting" name="Reporting" parent="hotel_room_reporting" action="hotel_report_view"/>
+
+    </data>
+</odoo>
+
+
+<!--<div class="form-group col-12 s_website_form_field s_website_form_required"-->
+<!--     data-type="char" data-name="Field">-->
+<!--<div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--    <label class="col-form-label col-sm-auto s_website_form_label"-->
+<!--           style="width: 200px" for="studio1">-->
+<!--        <span class="s_website_form_label_content">Room</span>-->
+<!--        <span class="s_website_form_mark">*</span>-->
+<!--    </label>-->
