@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="university_form_view">
+            <field name="name">University</field>
+            <field name="model">university.show</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="u_name" string="Name"/>
+                        </group>
+                        <group>
+                            <field name="u_code" string="Code"/>
+                        </group>
+                        <group>
+                            <field name="u_type" string="Type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="university_view">
+            <field name="name">University</field>
+            <field name="model">university.show</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="u_name" string="Name"/>
+                    <field name="u_code" string="Code"/>
+                    <field name="u_type" string="Type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_university" model="ir.actions.act_window">
+            <field name="name">University</field>
+            <field name="res_model">university.show</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="university_event_main" name="University Event"/>
+        <menuitem id="university_show" name="university" parent="university_event_main" action="action_university"/>
+
+
+    </data>
+</odoo>

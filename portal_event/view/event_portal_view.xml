@@ -1,0 +1,91 @@
+<odoo>
+    <template id="portal_my_home_event" name="University Events" inherit_id="portal.portal_my_home"
+              customize_show="True" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">University Events</t>
+                <t t-set="url" t-value="'/my/events'"/>
+                <t t-set="placeholder_count" t-value="'u_event_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_events" name="My Events">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">University Events</t>
+            </t>
+            <t t-if="not value">
+                <p>There are currently no events.</p>
+            </t>
+            <t t-if="value" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>
+                            <span class='d-none d-md-inline'>Event Name</span>
+                            <span class='d-block d-md-none'>Ref.</span>
+                        </th>
+                        <th>From</th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+                <t t-foreach="value" t-as="value">
+                    <tr>
+                        <td>
+                            <a href="#" t-attf-data-id="{{value.id}}" class="toggle_event">
+                                <t t-esc="value.e_name"/>
+                            </a>
+                        </td>
+                        <td>
+                            <span t-field="value.start_date" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                            <!--                            <span class='d-none d-md-inline' t-field="order.to" t-options="{'time_only': True}"/>-->
+                        </td>
+                        <!--                        <td class="text-center">-->
+                        <!--                            <span t-if="order.state == 'done'"  class="badge badge-pill badge-success">-->
+                        <!--                                <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>Done-->
+                        <!--                            </span>-->
+                        <!--                        </td>-->
+                        <td>
+                            <span t-field="value.end_date" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                        </td>
+                    </tr>
+
+                    <tr class="drop_data d-none" t-attf-id="{{value.id}}">
+                        <td colspan="4">
+
+                            <section>
+                                <div>
+                                    <table class="table">
+                                        <thead>
+                                            <th>Program</th>
+                                            <th class="text-center"/>
+                                            <th>Time</th>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="value.slot_ids" t-as="slot">
+                                                <tr>
+                                                    <td>
+                                                        <span t-field="slot.content"/>
+                                                    </td>
+                                                    <td>
+                                                        <span/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="slot.time"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

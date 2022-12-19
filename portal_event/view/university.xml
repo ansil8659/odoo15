@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="university_event_form_view">
+            <field name="name">University Event</field>
+            <field name="model">university.event</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,ongoing,expires"
+                               options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="e_name" string="Name"/>
+                            </group>
+                            <group>
+                                <field name="e_type" string="Type"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="start_date" string="From"/>
+                            </group>
+                            <group>
+                                <field name="end_date" string="To"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="u_name_id" string="U.Name"/>
+                            </group>
+                            <group>
+                                <field name="u_code" string="U.Code"/>
+                            </group>
+                            <group>
+                                <field name="u_type" string="U.Type"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Event Slot">
+                                <field name="slot_ids">
+                                    <tree editable="bottom">
+                                        <field name="time"/>
+                                        <field name="content"/>
+<!--                                        <field name="age"/>-->
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="university_event_view">
+            <field name="name">University Event</field>
+            <field name="model">university.event</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="e_name" string="Name"/>
+                    <field name="e_type" string="Type"/>
+                    <field name="start_date" string="From"/>
+                    <field name="end_date" string="To"/>
+                    <field name="u_name_id" string="U.Name"/>
+                    <field name="u_code" string="U.Code"/>
+                    <field name="u_type" string="U.Type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_university_event" model="ir.actions.act_window">
+            <field name="name">University Event</field>
+            <field name="res_model">university.event</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        <menuitem id="university_event_main" name="University Event"/>-->
+        <menuitem id="university_event" name="Event" parent="university_event_main" action="action_university_event"/>
+
+    </data>
+</odoo>

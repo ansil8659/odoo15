@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+university_shows,University Show,model_university_show,base.group_user,1,1,1,1
+university_events,University Event,model_university_event,base.group_user,1,1,1,1
+university_events_slot,University Event Slot,model_event_slot,base.group_user,1,1,1,1
+
+
